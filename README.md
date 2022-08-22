@@ -12,7 +12,7 @@ This project has since expanded to a website that allows for:
 This is in active development, and as such is missing some features.
 Highest up on the list are as follows:
 1.) Allow users to remove books from their libraries
-2.) In the event the user had to fall back on a cURL request, take the data from said request and upload it to the database
+2.) In the event the user had to fall back on a cURL request, take the data from said request and upload it to the database.  If you notice that some entries in your library are missing everything but the Open Library ID, this will fix that.
 3.) Add Authorship information to both the Search Results and the user's Library View
 4.) On account creation, require the user to enter their password twice
 5.) Password reset
