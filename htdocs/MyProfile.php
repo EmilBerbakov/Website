@@ -10,3 +10,5 @@
 <form action="MyLibrary.php" method="post">
 <input type="submit" value="View My Library" id='librarybutton' class="btn btn-dark">
 </form>
+</body>
+</html>
