@@ -31,12 +31,13 @@
 		</ul>
 	</li>
 	<?php
-		if (isset($_SESSION['USER_ID_NUMBER'])){
-			echo '<li class="nav-item"><a class="nav-link" href="LogoutForm.php">Logout</a></li>';
-			echo '<li class="nav-item"><a class="nav-link" href="MyProfile.php">My Profile</a></li>';
+		if (isset($_SESSION['USER_ID_NUMBER'])){;?>
+			<li class="nav-item"><a class="nav-link" href="LogoutForm.php">Logout</a></li>
+			<li class="nav-item"><a class="nav-link" href="MyProfile.php">My Profile</a></li>
+	<?php 
 	}
 	else{ 
-	echo '
+	;?>
 	<li class="nav-item dropdown">
 		<a class="nav-link dropdown-toggle" href="#" id="loginDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
 		<ul>
@@ -60,8 +61,7 @@
 		-->
 			
 	</li>
-	';};
-	?>
+	<?php ;};?>
     </ul>
   </div>
 </nav>
