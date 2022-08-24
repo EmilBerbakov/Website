@@ -78,20 +78,27 @@ foreach ($outputresults as $ln){
 	else {
 		$fullTitle=$ln['TITLE'];
 	}
-	echo "<tr id='$edid'>";
-	echo "<td>".$fullTitle."</td>";
-	echo "<td>".$ln['ISBN_13']."</td>";
-	echo "<td>".$ln['ISBN_10']."</td>";
-	echo "<td>".$edid."</td>";
+	;?>
+	<tr id='<?php echo $edid;?>'>
+	<td><?php echo $fullTitle;?></td>
+	<td><?php echo $ln['ISBN_13'];?></td>
+	<td><?php echo $ln['ISBN_10'];?></td>
+	<td><?php echo $edid;?></td>
+<?php 
 if (isset($_SESSION['USER_ID_NUMBER'])){
 	include 'php-addons/BookFunGenericSearchResults-Members.php';
 };
-	echo "</tr>";
+;?>
+ </tr>
+ <?php
 		}	
 
 ;?>
 </table>
+<?php 
+if (isset($_SESSION['USER_ID_NUMBER'])){ ;?>
 <input type="submit" value="Add to library" class="btn btn-dark"  id='libadd' >
+<?php }; ?>
 </form>
 
 
