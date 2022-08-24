@@ -38,9 +38,9 @@
 		<th><label for 'OLID-output'>Open Library ID</label></th>
 		<!--<th> <label for 'AUTHOR-output'>Author Name</label></th>-->
 		<?php 
-			if (isset($_SESSION['USER_ID_NUMBER'])){
-			echo "<th>Want or Own?</th> <th>Read?</th>";
-			};
+			if (isset($_SESSION['USER_ID_NUMBER'])) { ;?>
+			<th>Want or Own?</th> <th>Read?</th>
+		<?php	};
 		;?>
 	</tr>
 
@@ -57,7 +57,8 @@ switch($dbresultscount) {
 		break;
 	case $dbresultscount>0:
 		$outputresults=$dbresults;
-		if (isset($_SESSION[$_SESSION['USER_ID_NUMBER']."_CURLRESULTS"])){
+		$uid=$_SESSION['USER_ID_NUMBER']??'Guest';
+		if (isset($_SESSION[$uid."_CURLRESULTS"])){
 		unset ($_SESSION[$_SESSION['USER_ID_NUMBER']."_CURLRESULTS"]);
 		}
 		break;
