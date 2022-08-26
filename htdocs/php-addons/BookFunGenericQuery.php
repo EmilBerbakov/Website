@@ -1,11 +1,13 @@
 <?php
 //This sets $column to the type of search the user is performing.  
-	foreach($_POST as $key=>$value){
-	if ($value != "") {
+
+foreach($_POST as $key=>$value){
 		$column=$key;
 		$params=array($value);
-	}
-	}
+	};
+	
+
+
 
 //I am not letting DB searches on Title at this time.  This is due to the following:
 //1.) I'm currently storing the titles as NVARCHAR(max).  Attempting to search on a non-index column like this takes awhile, especially because I want to allow fuzzy matching.  To solve this, the eventual plan is to convert the nvarchar to something smaller, create a hash index, and do title searches off that.
