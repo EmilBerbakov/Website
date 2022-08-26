@@ -23,7 +23,7 @@
 		<li> Keep track of personal libraries and reading progress through the database </li>
 	</ol>
 	</div>
-	<?php include("php-addons/LibrarySearchTable.php");include("php-addons/standardjsimport.php");?>
+	<?php include("php-addons/LibrarySearchTableMark2.php");include("php-addons/standardjsimport.php");?>
 	<script src="/js/searchoption.js"></script>
 	
   </body>
