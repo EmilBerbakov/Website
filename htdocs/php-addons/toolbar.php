@@ -26,6 +26,7 @@
 		</a>
 		<ul class="dropdown-menu" aria-labelledby="contactDropdown">
 			<li><a class="dropdown-item" href="https://www.linkedin.com/in/emil-berbakov/" target="_blank" rel="noopener noreferrer">Message me on LinkedIn</a></li>
+			<li><a class="dropdown-item" href="https://github.com/EmilBerbakov" target="_blank" rel="noopener noreferrer">Check out my GitHub</a></li>
 			<li><a class="dropdown-item" href="mailto:emberbakov@gmail.com">Send Me an Email </a></li>
 			<li> <a class="dropdown-item" href="resume.php">Read my Resume</a></li>
 			
