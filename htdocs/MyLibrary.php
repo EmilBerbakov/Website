@@ -12,13 +12,7 @@ try{
 include "php-addons/BookFunGenericConnection.php";
 $userlib='USER_'.$_SESSION['USER_ID_NUMBER'].'_LIBRARY';
 //This has to be a left join because, at this point, not all books in a user's library will be in the database".
-//This is safe to leave as is because $userlib is not set by user.  Still, this is something I want to change.
-$dbquery="SELECT b.EDITION_ID, a.TITLE, a.SUBTITLE, a.ISBN_10, a.ISBN_13,c.OWNERSHIP_STRING,d.STATUS_NAME,b.BOOK_NUM
-FROM Libraries.".$userlib." b
-left join EDITION_INFO_2 a on a.EDITION_ID=b.EDITION_ID
-join ZC_OWNERSHIP_STATUS c on c.OWNERSHIP_ID=b.OWNERSHIP_STATUS
-join ZC_READING_STATUS d on d.STATUS_ID=b.READ_STATUS
-";
+$dbquery="execute Libraries.USERLIBRARY @USERTABLE=".$userlib."";
 
 $dbgetresults=$conn->prepare($dbquery);
 $dbgetresults->execute();
