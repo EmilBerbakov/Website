@@ -52,7 +52,7 @@ foreach($_POST as $key=>$value){
 		if($column !=='TITLE'){
 		$dbquery="select top 50 a.EDITION_ID,a.TITLE,a.SUBTITLE,a.ISBN_13,a.ISBN_10,c.AUTHOR_NAME from EDITION_INFO_2 a left join EDITION_TO_AUTHOR b on a.EDITION_ID=b.EDITION_ID left join AUTHOR_INFO c on b.AUTHOR_ID=c.AUTHOR_ID where a.$column=?";
 		}
-
+		//Leaving title output at top 50 for readability.  Will return everything once pagination is introduced.
 		else {
 			$dbquery="select a.EDITION_ID,a.TITLE,a.SUBTITLE,a.ISBN_13,a.ISBN_10,c.AUTHOR_NAME
 			from EDITION_INFO_2 a
