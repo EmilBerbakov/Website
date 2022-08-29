@@ -1,4 +1,4 @@
-<?php $title="Home";$smallpicture="icons/house.svg";include("php-addons/top.php");?>
+<?php $title="Home - Test";$smallpicture="icons/house.svg";include("php-addons/top.php");?>
 </head>
 <body>
 <h1>Home Base</h1>
