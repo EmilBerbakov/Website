@@ -11,6 +11,9 @@
 try{
 include "php-addons/BookFunGenericConnection.php";
 $userlib='USER_'.$_SESSION['USER_ID_NUMBER'].'_LIBRARY';
+//first check if the library exists
+
+
 //This has to be a left join because, at this point, not all books in a user's library will be in the database".
 $dbquery="execute Libraries.USERLIBRARY @USERTABLE=".$userlib."";
 
