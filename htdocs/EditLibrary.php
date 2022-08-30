@@ -99,10 +99,11 @@ Next, we see if [READ],[READING],[TBR], or [DNF] are populated.  If not, we will
 Now we have the values.  I want to store these statues as ints, and then make a table that points the int representing the status.
 Known issue: if you do not select a button in the button set for a particular book, it inherits the value of the one above it.
 */
+
+
 try {
 foreach($_POST as $edid=>$stats){
 	if (count($stats)==2) {
-		print_r($stats);
 		foreach ($stats as $substats) {
 			switch($substats){
 					case 'WANT':
@@ -127,6 +128,7 @@ foreach($_POST as $edid=>$stats){
 					
 		}
 		}
+	
 	//Note: Fix this by doing a prep and send.  No Bobby Tables, please.
 	$dbquery="
 	IF EXISTS (SELECT * FROM Libraries.".$userlib." where EDITION_ID='".$edid."')
@@ -148,6 +150,7 @@ foreach($_POST as $edid=>$stats){
 	";
 	$dbgetresults=$conn->prepare($dbquery);
 	$dbgetresults->execute();
+	
 	}
 }
 }

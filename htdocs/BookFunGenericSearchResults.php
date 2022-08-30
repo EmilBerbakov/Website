@@ -24,8 +24,8 @@
 <?php 
 	if (($dbresultscount==0) &(($curlresults==0)|($curlresults=='[]'))) {
 		die( '<h4>No results for '.$column.' = '.$params[0].'.  Please try again with different parameters.</h4>');
-	} ?>
-
+	}
+	;?>
 
 <!--Else, we start building the results table.  Up first, is the header column. -->
 <br/>
@@ -36,7 +36,7 @@
 		<th><label for 'ISBN13-output'>ISBN-13</label></th>
 		<th><label for 'ISBN10-output'>ISBN-10</label></th>
 		<th><label for 'OLID-output'>Open Library ID</label></th>
-		<!--<th> <label for 'AUTHOR-output'>Author Name</label></th>-->
+		<th> <label for 'AUTHOR-output'>Author Name</label></th>
 		<?php 
 			if (isset($_SESSION['USER_ID_NUMBER'])) { ;?>
 			<th>Want or Own?</th> <th>Read?</th>
@@ -64,27 +64,30 @@ switch($dbresultscount) {
 		break;
 
 }
-
-//Now, we loop through each line in $outputresults and print out a row to populate with the desired output
-
-
-
-//For NON author output
-foreach ($outputresults as $ln){
-	$edid=$ln['EDITION_ID'];
-	if ($ln['SUBTITLE']!==null) {
-		$fullTitle=$ln['TITLE'].': '.$ln['SUBTITLE'];
+foreach($outputresults as $edid=>$stuff){
+	if ($stuff[0]['SUBTITLE']!==null) {
+		$fullTitle=$stuff[0]['TITLE'].': '.$stuff[0]['SUBTITLE'];
 	}
 	else {
-		$fullTitle=$ln['TITLE'];
-	}
+		$fullTitle=$stuff[0]['TITLE'];
+	}	
 	;?>
-	<tr id='<?php echo $edid;?>'>
+	<tr id= <?php echo '"'.$edid.'"';?>>
 	<td><?php echo $fullTitle;?></td>
-	<td><?php echo $ln['ISBN_13'];?></td>
-	<td><?php echo $ln['ISBN_10'];?></td>
+	<td><?php echo $stuff[0]['ISBN_13'];?></td>
+	<td><?php echo $stuff[0]['ISBN_10'];?></td>
 	<td><?php echo $edid;?></td>
-<?php 
+	<td>
+	<?php
+	for($i=0;$i<count($stuff);$i++){
+		echo $stuff[$i]['AUTHOR_NAME'];
+		;?>
+		<br/>
+		
+	<?php	
+	} ;?>
+	</td>
+	<?php 
 if (isset($_SESSION['USER_ID_NUMBER'])){
 	include 'php-addons/BookFunGenericSearchResults-Members.php';
 };
@@ -98,10 +101,9 @@ if (isset($_SESSION['USER_ID_NUMBER'])){
 <?php 
 if (isset($_SESSION['USER_ID_NUMBER'])){ ;?>
 <input type="submit" value="Add to library" class="btn btn-dark"  id='libadd' >
-<?php }; ?>
+<?php }; 
+?>
 </form>
-
-
 	
 </body>
 </html>
