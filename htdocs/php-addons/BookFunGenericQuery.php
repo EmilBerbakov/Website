@@ -43,16 +43,15 @@ foreach($_POST as $key=>$value){
 			$column='EDITION_ID';
 		}
 
-		if($column=='TITLE'){
+		if($key=='TITLE'){
 			$params[0]='"'.$params[0].'"';
 		};
 
 		//For Author Output
-		/*
 		if($column !=='TITLE'){
 		$dbquery="select top 50 a.EDITION_ID,a.TITLE,a.SUBTITLE,a.ISBN_13,a.ISBN_10,c.AUTHOR_NAME from EDITION_INFO_2 a left join EDITION_TO_AUTHOR b on a.EDITION_ID=b.EDITION_ID left join AUTHOR_INFO c on b.AUTHOR_ID=c.AUTHOR_ID where a.$column=?";
 		}
-		//Leaving title output at top 50 for readability.  Will return everything once pagination is introduced.
+
 		else {
 			$dbquery="select a.EDITION_ID,a.TITLE,a.SUBTITLE,a.ISBN_13,a.ISBN_10,c.AUTHOR_NAME
 			from EDITION_INFO_2 a
@@ -61,7 +60,6 @@ foreach($_POST as $key=>$value){
 			left join AUTHOR_INFO c on b.AUTHOR_ID=c.AUTHOR_ID
 			where contains(a.TITLE,?);";
 		}
-		*/
 		
 		//We will make sure $column is an expected column.  No Bobby Tables for my database...
 
@@ -69,21 +67,16 @@ foreach($_POST as $key=>$value){
 		
 		//For NON Author Output
 		
-		if ($column!=='TITLE'){
-		$dbquery="SELECT top 50 * FROM EDITION_INFO_2 where ".$column."=?";
-		}
-		else{
-			$dbquery="SELECT top 50 * FROM EDITION_INFO_2 where contains(EDITION_INFO_2.TITLE,?)";
-		}
+		//$dbquery="SELECT top 50 * FROM EDITION_INFO_2 where ".$column."=?";
 		
 		
 		$dbgetresults=$conn->prepare($dbquery);
 		$dbgetresults->execute($params);
 	
 		//For NON Author output
-	    $dbresults=$dbgetresults->fetchAll(PDO::FETCH_ASSOC);
+	    //$dbresults=$dbgetresults->fetchAll(PDO::FETCH_ASSOC);
 		//For Author output
-		//$dbresults=$dbgetresults->fetchAll(PDO::FETCH_GROUP | PDO::FETCH_ASSOC);
+		$dbresults=$dbgetresults->fetchAll(PDO::FETCH_GROUP | PDO::FETCH_ASSOC);
 		
 		$dbresultscount=count($dbresults);
 

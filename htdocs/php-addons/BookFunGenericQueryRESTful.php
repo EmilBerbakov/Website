@@ -20,7 +20,6 @@
 	curl_setopt_array($curl,$options);
 	$curlreturn=curl_exec($curl);
 	curl_close($curl);
-	$fn=0;
 	$curljson=json_decode($curlreturn,true);
 	
 if ($column!='EDITION_ID' & $curljson!=null){
