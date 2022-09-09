@@ -32,8 +32,10 @@ $dbresults=$dbgetresults->fetchAll(PDO::FETCH_ASSOC);
 $dbresultscount=count($dbresults);
 
 if ($dbresultscount==0) {
-	echo "<h4>You have no books in your library yet.  Why don't you go add some?</h4><br />";
-	echo "<a class='btn btn-dark' href='BookFormMark2.php' role='button'>Let's go!</a>";
+;?>	
+	<h4>You have no books in your library yet.  Why don't you go add some?</h4><br />
+	<a class='btn btn-dark' href='BookFormMark2.php' role='button'>Let's go!</a>
+<?php
 	die();
 }
 
@@ -48,15 +50,18 @@ die(include 'php-addons/ErrorMessage.php');
 
 <!--To-Do: make the Search Results table its own PHP since this going to be the same in basic appearance for each view.  The only difference will be that this table can take books away.
 -->
-<table class='table table-boardered border-secondary' id="mylibraryresults" style='width:75%'>
+<div class='container-fluid'>
+<form action="EditLibrary.php" method="post">
+<div class="table-responsive-sm">
+<table class='table table-boardered border-secondary' id="mylibraryresults" >
 	<tr id="header">
-		<th><label for 'title-output'>Book Title</label></th>
-		<th><label for 'ISBN13-output'>ISBN-13</label></th>
-		<th><label for 'ISBN10-output'>ISBN-10</label></th>
-		<th><label for 'OLID-output'>Open Library ID</label></th>
-		<th><label for 'BOOK_NUM-output'>Number of Copies</label></th>
-		<th><label for 'OWNERSHIP-output'>Own or Want</label></th>
-		<th><label for 'READING-output'>Reading Status</label></th>
+		<th>Book Title</th>
+		<th>ISBN-13</th>
+		<th>ISBN-10</th>
+		<th>Open Library ID</th>
+		<th>Number of Copies</th>
+		<th>Own or Want</th>
+		<th>Reading Status</th>
 		
 <?php
 foreach($dbresults as $ln) {
@@ -72,7 +77,7 @@ foreach($dbresults as $ln) {
 	<td><?php echo $ln['ISBN_13'];?></td>
 	<td><?php echo $ln['ISBN_10'];?></td>
 	<td><?php echo $edid;?></td>
-	<td><?php $bookcount=$ln['BOOK_NUM'];include 'php-addons/countbuttons.php';?>
+	<td><input type="number" required min="0" id="<?php echo $edid;?>-COUNT" name="<?php echo $edid;?>[COUNT]" class="form-control input-number" value=<?php echo $ln['BOOK_NUM'];?>>
 	</td>
 	<td><?php echo $ln['OWNERSHIP_STRING'];?></td>
 	<td><?php echo $ln['STATUS_NAME'];?></td>
@@ -80,3 +85,11 @@ foreach($dbresults as $ln) {
 <?php }
 
 ;?>
+
+</table>
+</div>
+<input type="submit" value="Edit library" class="btn btn-dark"  id='libedit' >
+</form>
+</div>
+</body>
+</html>
