@@ -173,7 +173,7 @@ catch (Exception $e) {
 	print_r($e);
 	include 'php-addons/ErrorMessage.php';
 }
-die();
+
 header("Location: MyProfile.php")
 
 
