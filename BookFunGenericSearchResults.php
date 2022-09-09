@@ -34,11 +34,11 @@
 <div class="table-responsive-sm">
 <table class='table table-boardered border-secondary' id="searchresults">
 	<tr id="header">
-		<th><label for 'title-output'>Book Title</label></th>
-		<th><label for 'ISBN13-output'>ISBN-13</label></th>
-		<th><label for 'ISBN10-output'>ISBN-10</label></th>
-		<th><label for 'OLID-output'>Open Library ID</label></th>
-		<th> <label for 'AUTHOR-output'>Author Name</label></th>
+		<th>Book Title</th>
+		<th>ISBN-13</th>
+		<th>ISBN-10</th>
+		<th>Open Library ID</th>
+		<th>Author Name</th>
 		<?php 
 			if (isset($_SESSION['USER_ID_NUMBER'])) { ;?>
 			<th>Want or Own?</th> <th>Read?</th>
