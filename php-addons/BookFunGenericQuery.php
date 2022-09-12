@@ -15,8 +15,9 @@ foreach($_POST as $key=>$value){
 //So, due to all of that, title searches will default to the RESTful lookup.  All other available search options are indexed, so I will allow db search first, then RESTful search if it's not on the db.
 
 //if ($column!=='TITLE') {	
-	include 'php-addons/BookFunGenericConnection.php';
+	
 	try {
+		include 'php-addons/BookFunGenericConnection.php';
 		/*
 		In the event WORK_TO_AUTHOR and EDITION_TO_WORK does not get done in time:
 		
@@ -88,7 +89,8 @@ foreach($_POST as $key=>$value){
 		}
 	}
 	catch(Exception $e){
-		print_r($e);
+		//print_r($e);
+		die(header('Location: ErrorMessage.php'));
 	}
 //}
 /*

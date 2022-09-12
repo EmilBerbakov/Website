@@ -1,19 +1,14 @@
-<?php $title="Your Library";$smallpicture="icons/bookicon.png";include("php-addons/top.php");?>
-</head>
-<body>
-<h1>
-<?php echo $_SESSION['FIRST_NAME']."'s Library"; ?>
-</h1>
-<?php include('php-addons/toolbar.php');include("php-addons/standardjsimport.php");?> 
-<br/>
+
 
 <?php
 try{
 include "php-addons/BookFunGenericConnection.php";
+//$title="Your Library";$smallpicture="icons/bookicon.png";include("php-addons/top.php");
+session_start();
 $userlib='USER_'.$_SESSION['USER_ID_NUMBER'].'_LIBRARY';
 //first check if the library exists
-
-
+//session_destroy();
+//print_r($_SESSION);
 //This has to be a left join because, at this point, not all books in a user's library will be in the database".
 //This is safe to leave as is because $userlib is not set by user.  Still, this is something I want to change.
 /*
@@ -30,7 +25,20 @@ $dbgetresults=$conn->prepare($dbquery);
 $dbgetresults->execute();
 $dbresults=$dbgetresults->fetchAll(PDO::FETCH_ASSOC);
 $dbresultscount=count($dbresults);
-
+//print_r($_SESSION);
+//die();
+$title="Your Library";$smallpicture="icons/bookicon.png";include('php-addons/top.php');
+//print_r($_SESSION);
+//die();
+;?>
+</head>
+<body>
+<h1>
+<?php echo $_SESSION['FIRST_NAME']."'s Library"; ?>
+</h1>
+<?php include('php-addons/toolbar.php');include("php-addons/standardjsimport.php");?> 
+<br/>
+<?php
 if ($dbresultscount==0) {
 ;?>	
 	<h4>You have no books in your library yet.  Why don't you go add some?</h4><br />
@@ -43,7 +51,8 @@ if ($dbresultscount==0) {
 
 catch (Exception $e) {
 //print_r($e);
-die(include 'php-addons/ErrorMessage.php');
+die(header('Location: ErrorMessage.php'));
+
 }
 
 ;?>

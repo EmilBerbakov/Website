@@ -73,8 +73,8 @@ $dbgetresults->execute();
 
 
 catch (Exception $e) {
-	print_r($e);
-	include 'php-addons/ErrorMessage.php';
+	//print_r($e);
+	die(header('Location: ErrorMessage.php'));
 }
 /*
 //While I don't need the query to return anything at this point (I think), it may be something I need in the future, so let's keep this in as a reminder
@@ -160,20 +160,22 @@ foreach($_POST as $edid=>$stats){
 			}
 		}
 	//$userlib="Libraries.".$userlib;
-	$dbquery="execute Libraries.EditLibrary @USERTABLE=".$userlib." ,@COUNT=?, @EDITION=?";
+	$dbquery="execute Libraries.EditLibrary @USERTABLE=".$userlib." ,@COUNT=?, @EDITIONID=?";
 	$dbgetresults=$conn->prepare($dbquery);
 	$dbgetresults->bindParam(1,$countvalue,PDO::PARAM_INT);
-	$dbgetresults->bindParam(2,$edid,PDO::PARAM_STR_CHAR);
-	print_r($dbgetresults);
+	$dbgetresults->bindParam(2,$edid);
+	//print_r($dbgetresults);
+	$dbgetresults->debugDumpParams();
 	$dbgetresults->execute();
+	
 	}
 }
 }
 catch (Exception $e) {
-	print_r($e);
-	include 'php-addons/ErrorMessage.php';
+	//print_r($e);
+	header("Location: php-addons/ErrorMessage.php");
+	die();
 }
-
 header("Location: MyProfile.php")
 
 

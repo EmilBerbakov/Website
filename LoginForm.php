@@ -61,7 +61,7 @@ $dbgetresults->execute();
 }
 
 catch (Exception $e) {
-	include 'php-addons/ErrorMessage.php';
+	include 'ErrorMessage.php';
 	die();
 }
 	

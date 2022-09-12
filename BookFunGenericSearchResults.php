@@ -1,6 +1,8 @@
 <!-- To enable author output, uncomment all code marked For Author Output
 	To enable non author output, uncomment all code marked For NON Author Output
 -->
+<!--Here are the connection and query scripts.-->
+<?php include 'php-addons/BookFunGenericQuery.php';?>
 
 <?php $title="Emil's Library Database Search Results";$smallpicture="icons/bookicon.png";include("php-addons/top.php");?>
 </head>
@@ -10,9 +12,9 @@
 <br/>
 
 
-<!--Here are the connection and query scripts.-->
 
-<?php include 'php-addons/BookFunGenericQuery.php';?>
+
+
 <!--Button to start a new search-->
 <a class="btn btn-dark" href="BookFormMark2.php" role="button">New Search</a>
 <br />
