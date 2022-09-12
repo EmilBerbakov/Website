@@ -2,10 +2,7 @@
 <?php
 
 try{
-	$serverName="tcp:DESKTOP-T5POA74"; 
-	$conn= new PDO("sqlsrv:server=$serverName;Database=Book_Fun","generic","sqlfun");
-	$conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	$conn->setAttribute(PDO::SQLSRV_ATTR_QUERY_TIMEOUT,5);
+	include "php-addons/BookFunGenericConnection.php";
 	$dbquery='SELECT * FROM USER_INFO WHERE EMAIL_ADDRESS=?';
 	$dbresults=$conn->prepare($dbquery);
 	$dbresults->execute(array($_POST['emailentry']));
