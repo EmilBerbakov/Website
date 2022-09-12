@@ -4,8 +4,8 @@
 <table id='searchoptions'>
 	<tr>
 <th><div class='dropdown'>
-	<button class='btn btn-dark dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' id='mainbutton' value='None'> Start your search with one of the following:</button>
-	<div class="dropdown-menu">
+	<button class='btn btn-dark dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false' id='mainbutton' value='None'> Start your search with one of the following:</button>
+	<div class="dropdown-menu dropdown-menu-dark">
 				<h6 class="dropdown-header" id="specific-header" aria-labelledby="toggle">ID Search</h6>
 				<div class="dropdown-divider"></div>
 				<button class="dropdown-item" type="button" id="ISBN_10" onclick="searchswitch(this.id)">ISBN-10</button>
