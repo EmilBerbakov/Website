@@ -1,4 +1,5 @@
 <?php $title="Resume";$smallpicture="icons/bookicon.jpg";include("php-addons/top.php");?>
+
 </head>
 <body>
 <h1>My Work Experience and Professional Skills</h1>

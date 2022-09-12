@@ -73,8 +73,8 @@ $dbgetresults->execute();
 
 
 catch (Exception $e) {
-	print_r($e);
-	include 'php-addons/ErrorMessage.php';
+	//print_r($e);
+	die(header('Location: ErrorMessage.php'));
 }
 /*
 //While I don't need the query to return anything at this point (I think), it may be something I need in the future, so let's keep this in as a reminder
@@ -99,7 +99,6 @@ Next, we see if [READ],[READING],[TBR], or [DNF] are populated.  If not, we will
 Now we have the values.  I want to store these statues as ints, and then make a table that points the int representing the status.
 Known issue: if you do not select a button in the button set for a particular book, it inherits the value of the one above it.
 */
-
 
 try {
 foreach($_POST as $edid=>$stats){
@@ -152,13 +151,31 @@ foreach($_POST as $edid=>$stats){
 	$dbgetresults->execute();
 	
 	}
+	elseif(count($stats)==1){
+		foreach ($stats as $type=>$value){
+			switch($type){
+			case 'COUNT':
+				$countvalue=$value;
+				break;
+			}
+		}
+	//$userlib="Libraries.".$userlib;
+	$dbquery="execute Libraries.EditLibrary @USERTABLE=".$userlib." ,@COUNT=?, @EDITIONID=?";
+	$dbgetresults=$conn->prepare($dbquery);
+	$dbgetresults->bindParam(1,$countvalue,PDO::PARAM_INT);
+	$dbgetresults->bindParam(2,$edid);
+	//print_r($dbgetresults);
+	$dbgetresults->debugDumpParams();
+	$dbgetresults->execute();
+	
+	}
 }
 }
 catch (Exception $e) {
-	print_r($e);
-	include 'php-addons/ErrorMessage.php';
+	//print_r($e);
+	header("Location: php-addons/ErrorMessage.php");
+	die();
 }
-
 header("Location: MyProfile.php")
 
 

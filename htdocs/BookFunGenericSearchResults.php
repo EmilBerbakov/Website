@@ -1,6 +1,8 @@
 <!-- To enable author output, uncomment all code marked For Author Output
 	To enable non author output, uncomment all code marked For NON Author Output
 -->
+<!--Here are the connection and query scripts.-->
+<?php include 'php-addons/BookFunGenericQuery.php';?>
 
 <?php $title="Emil's Library Database Search Results";$smallpicture="icons/bookicon.png";include("php-addons/top.php");?>
 </head>
@@ -10,9 +12,9 @@
 <br/>
 
 
-<!--Here are the connection and query scripts.-->
 
-<?php include 'php-addons/BookFunGenericQuery.php';?>
+
+
 <!--Button to start a new search-->
 <a class="btn btn-dark" href="BookFormMark2.php" role="button">New Search</a>
 <br />
@@ -29,14 +31,16 @@
 
 <!--Else, we start building the results table.  Up first, is the header column. -->
 <br/>
+<div class='container-fluid'>
 <form action="EditLibrary.php" method="post">
-<table class='table table-boardered border-secondary' id="searchresults" style='width:75%'>
+<div class="table-responsive-sm">
+<table class='table table-boardered border-secondary' id="searchresults">
 	<tr id="header">
-		<th><label for 'title-output'>Book Title</label></th>
-		<th><label for 'ISBN13-output'>ISBN-13</label></th>
-		<th><label for 'ISBN10-output'>ISBN-10</label></th>
-		<th><label for 'OLID-output'>Open Library ID</label></th>
-		<th> <label for 'AUTHOR-output'>Author Name</label></th>
+		<th>Book Title</th>
+		<th>ISBN-13</th>
+		<th>ISBN-10</th>
+		<th>Open Library ID</th>
+		<th>Author Name</th>
 		<?php 
 			if (isset($_SESSION['USER_ID_NUMBER'])) { ;?>
 			<th>Want or Own?</th> <th>Read?</th>
@@ -100,10 +104,12 @@ if (isset($_SESSION['USER_ID_NUMBER'])){
 </table>
 <?php 
 if (isset($_SESSION['USER_ID_NUMBER'])){ ;?>
+</div>
 <input type="submit" value="Add to library" class="btn btn-dark"  id='libadd' >
 <?php }; 
-?>
+;?>
+</div>
 </form>
-	
+
 </body>
 </html>
